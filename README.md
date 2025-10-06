@@ -5,12 +5,12 @@ HelpDesk em PHP - Repositório Criado para Projeto de PHP nas aulas de Desenvolv
 
 
 # FUNCIONALIDADES: 
-<li>
-<ul> Serviço para abrir chamado de suporte, organização de chamado para os departamentos responsaveis.</ul>
-<ul> Cada chamado aberto deve ter um tempo util.</ul>
-<ul> Cada usuario deve conseguir visualizar apenas os seus chamados, e os administradores devem conseguir visualizar apenas os sistemas do seu departamento.</ul>
-<ul> Após cada chamado deve se ter um feedback para que o usuario possa avaliar.</ul>
-</li>
+<ul>
+<li> Serviço para abrir chamado de suporte, organização de chamado para os departamentos responsaveis.</li>
+<li> Cada chamado aberto deve ter um tempo util.</li>
+<li> Cada usuario deve conseguir visualizar apenas os seus chamados, e os administradores devem conseguir visualizar apenas os sistemas do seu departamento.</li>
+<li> Após cada chamado deve se ter um feedback para que o usuario possa avaliar.</li>
+</ul>
 
 
 # MODELAGEM DO BANCO
