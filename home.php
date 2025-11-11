@@ -1,6 +1,8 @@
 <?php
 
-include "cabecalho_logado.php"; ?>
+include "cabecalho_logado.php";
+
+ ?>
 
 
 <main class="container-fluid">
