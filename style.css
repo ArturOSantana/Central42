@@ -1,0 +1,150 @@
+/* Layout principal */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar-brand img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+/* Card principal */
+.card-home {
+  padding: 30px 0 0 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header do card */
+.card-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+.menu-option img {
+  width: 80px;
+  height: 80px;
+  transition: transform 0.2s ease;
+}
+
+.menu-option img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+
+
+/* Ícones do menu */
+.menu-option img {
+  width: 70px;
+  height: 70px;
+  transition: transform 0.2s ease;
+}
+
+.menu-option img:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+/* Layout do card de login */
+.card-login {
+  padding: 30px 0 0 0;
+  width: 350px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar-brand img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+/* Mensagens de erro */
+.error-message {
+  color: #dc3545; /* Vermelho bootstrap */
+  margin-bottom: 10px;
+}
+
+/* Botão de login */
+.btn-login {
+  font-size: 1.1rem;
+}
+/* Card abrir chamado */
+.card-abrir-chamado {
+  padding: 30px 0 0 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar-brand img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+/* Botões */
+.btn-voltar {
+  font-size: 1.1rem;
+}
+
+.btn-abrir {
+  font-size: 1.1rem;
+}
+
+
+/* Card consultar chamado */
+.card-consultar-chamado {
+  padding: 30px 0 0 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar-brand img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+/* Chamados */
+.chamado-card {
+  background-color: #f8f9fa;
+  border-left: 5px solid #2980b9; /* azul padrão */
+  margin-bottom: 1rem;
+  padding: 15px;
+}
+
+.chamado-card.usuario { border-left-color: #27ae60; }
+.chamado-card.impressora { border-left-color: #e67e22; }
+.chamado-card.hardware { border-left-color: #8e44ad; }
+.chamado-card.software { border-left-color: #2980b9; }
+.chamado-card.rede { border-left-color: #c0392b; }
+
+
+.chamado-card h5 {
+  font-weight: 600;
+}
+
+/* Botão voltar */
+.btn-voltar {
+  font-size: 1.1rem;
+}
+footer {
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
