@@ -43,21 +43,21 @@ class Usuario
             $stmt->execute();
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']){
-
-             
-                    $_SESSION['autenticado'] = "SIM";
-                    $_SESSION['id'] = $user['id_usuario'];
-                    $_SESSION['nome'] = $user['nome'];
-                    $_SESSION['id_tipo_usuario'] = $user['id_tipo_usuario'];
-                    $_SESSION['id_departamento'] = $user['id_departamento'];
-
-                    $this->carregarInfoUsuario($con, $user['id_departamento'], $user['id_tipo_usuario'],);
-                    
+            if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']) {
 
 
-                    return true;
-                }
+                $_SESSION['autenticado'] = "SIM";
+                $_SESSION['id'] = $user['id_usuario'];
+                $_SESSION['nome'] = $user['nome'];
+                $_SESSION['id_tipo_usuario'] = $user['id_tipo_usuario'];
+                $_SESSION['id_departamento'] = $user['id_departamento'];
+
+                $this->carregarInfoUsuario($con, $user['id_departamento'], $user['id_tipo_usuario'],);
+
+
+
+                return true;
+            }
         } catch (PDOException $erroaoAutenticar) {
             return false;
         }
@@ -81,4 +81,7 @@ class Usuario
         } catch (PDOException $erro) {
         }
     }
+
+
+    
 }
