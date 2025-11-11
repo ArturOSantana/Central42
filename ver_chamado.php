@@ -8,8 +8,6 @@ session_start();
 
 $id_chamado = $_GET['id'];
 
-// Aqui depois você colocará o PDO para buscar no banco
-// Exemplo de consulta (apenas referência):
 $stmt = $con->prepare(" SELECT 
         c.*, 
         u.nome AS nome_usuario,
@@ -43,14 +41,15 @@ $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col-md-6">
                     <p><strong>Status:</strong>
-                    <?php
-                    if ($chamado['status'] == 'Fechado'){ ?>
-                       <span class="badge bg-secondary">
-                            <?php echo ($chamado['status']);} else { 
-                               echo '<span class="badge bg-secondary">';
-                             echo ($chamado['status']);
-                            } ?>
-                        </span>
+                       <?php if ($chamado['status'] == 'Aberto') { ?>
+                      <span class="text-success">
+                        <?php echo $chamado['status']; ?>
+                      </span>
+                    <?php } else { ?>
+                      <span class="text-danger">
+                        <?php echo $chamado['status']; ?>
+                      </span>
+                    <?php } ?>
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
@@ -63,7 +62,7 @@ $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
             <p><strong>Usuário:</strong> <?php echo $chamado['nome_usuario']; ?></p>
             <p><strong>Departamento:</strong> <?php echo $chamado['nome_departamento']; ?></p>
             <?php if ($_SESSION['id_tipo_usuario'] == 2 || $_SESSION['id_tipo_usuario'] == 3 && $chamado['status'] == 'Aberto') { ?>
-                <form action="fechar_chamado.php" method="POST" class="mt-3">
+                <form action="fechar_chamado.php?get=$_GET['id_chamado'] method="get" class="mt-3">
                     <input type="hidden" name="id_chamado" value="<?php echo $id_chamado; ?>">
                     <button type="submit" class="btn btn-danger">Fechar Chamado</button>
                 </form>

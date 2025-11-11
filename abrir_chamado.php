@@ -1,4 +1,6 @@
-<?php include "cabecalho_logado.php"; ?>
+<?php include "cabecalho_logado.php"; 
+?>
+
 
 
   <main class="container">
