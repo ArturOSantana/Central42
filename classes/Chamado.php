@@ -28,7 +28,7 @@ class Chamado
     public function abrir(PDO $con) // PARA ABRIR O CHAMADO
     {
         try {
-            $sql = "INSERT INTO chamados (titulo, categoria, descricao, status, id_usuario, id_departamento, data_abertura) 
+            $sql = "INSERT INTO chamados (titulo, id_categoria, descricao, status, id_usuario, id_departamento, data_abertura) 
                 VALUES (:titulo, :categoria, :descricao, :status, :id_usuario, :id_departamento, :data_abertura)";
             $stmt = $con->prepare($sql);
             $stmt->bindParam(':titulo', $this->titulo);

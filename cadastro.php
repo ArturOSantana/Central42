@@ -46,13 +46,10 @@
             </div>
 
             <button class="btn btn-lg btn-info btn-block btn-login" type="submit">Cadastrar</button>
-          </form>
+            <a href="home.php" class="btn btn-outline-warning w-100 mt-2">Voltar</a>
+            
 
           <br>
-          <p class="text-center mb-0">
-            Já possui conta?
-            <a href="index.php" class="text-info">Fazer login</a>
-          </p>
         </div>
       </div>
     </article>
