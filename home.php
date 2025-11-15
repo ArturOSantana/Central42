@@ -1,13 +1,9 @@
-<?php
-
+<?php 
 include "cabecalho_logado.php";
-
- ?>
-
+?>
 
 <main class="container-fluid">
   <div class="row">
-
     <aside class="col-md-3 col-lg-2 bg-light border-end p-3 sidebar">
       <div class="text-center mb-4">
         <img src="user.png" alt="Usuário" width="80" class="rounded-circle mb-2">
@@ -21,38 +17,51 @@ include "cabecalho_logado.php";
       </ul>
 
       <hr>
-      <?php if($_SESSION['id_tipo_usuario'] == "3"){  ?>
-        <a href="cadastro.php" class="btn btn-outline-secondary w-100 mt-2">Cadastrar Usuario</a>
-        <?php }?>
+      
+      <?php if($_SESSION['id_tipo_usuario'] == "3"){ ?>
+        <a href="gerenciar_usuarios.php" class="btn btn-outline-primary w-100 mb-2">
+          Gerenciar Usuários
+        </a>
+      <?php } ?>
+      
       <a href="logout.php" class="btn btn-outline-danger w-100 mt-2">Sair</a>
     </aside>
+
     <section class="col-md-9 col-lg-10 p-4">
       <article class="card-home">
         <div class="card">
-          <header class="card-header bg-info text-white">
+          <header class="card-header">
             <h2 class="mb-0">Menu</h2>
           </header>
           <div class="card-body">
             <div class="row text-center">
               <div class="col-md-6 mb-4 menu-option">
-                <a href="abrir_chamado.php" aria-label="Abrir Chamado">
+                <a href="abrir_chamado.php">
                   <img src="formulario_abrir_chamado.png" alt="Abrir Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Abrir Chamado</p>
               </div>
               <div class="col-md-6 mb-4 menu-option">
-                <a href="consultar_chamado.php" aria-label="Consultar Chamado">
+                <a href="consultar_chamado.php">
                   <img src="formulario_consultar_chamado.png" alt="Consultar Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Consultar Chamado</p>
               </div>
+              
+              <?php if($_SESSION['id_tipo_usuario'] == "3"){ ?>
+                <div class="col-md-6 mb-4 menu-option">
+                  <a href="gerenciar_usuarios.php">
+                    <img src="img/gerenciar_usuarios.png" alt="Gerenciar Usuários" class="img-fluid" style="max-width:150px;">
+                  </a>
+                  <p class="mt-2">Gerenciar Usuários</p>
+                </div>
+              <?php } ?>
             </div>
           </div>
         </div>
       </article>
     </section>
-
   </div>
 </main>
 
-<?php include "rodape.php" ?>
+<?php include "rodape.php"; ?>

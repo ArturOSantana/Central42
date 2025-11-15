@@ -82,6 +82,56 @@ class Usuario
         }
     }
 
+    public function listarTodos($con)
+    {
+        try {
+            $stmt = $con->prepare("
+                SELECT u.id_usuario, u.nome, u.email, u.id_tipo_usuario, u.id_departamento,
+                       d.nome as departamento_nome, t.nome_tipo as tipo_nome
+                FROM usuarios u
+                LEFT JOIN departamentos d ON u.id_departamento = d.id_departamento
+                LEFT JOIN tipos_usuario t ON u.id_tipo_usuario = t.id_tipo_usuario
+                ORDER BY u.nome
+            ");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao listar usuários: " . $e->getMessage());
+        }
+    }
+    public function excluirUsuario($con, $id_usuario, $id_usuario_logado = null)
+    {
+        try {
+            if ($id_usuario == $id_usuario_logado) {
+                throw new Exception("Não é possível excluir seu próprio usuário!");
+            }
 
-    
+            $stmt = $con->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
+            $stmt->execute([$id_usuario]);
+
+        } catch (PDOException $eerroaoapagar) {
+            throw new Exception("Erro ao excluir usuário: " . $eerroaoapagar->getMessage());
+        }
+    }
+
+
+public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usuario, $id_departamento)
+    {
+        try {
+            $stmt = $con->prepare("
+                UPDATE usuarios 
+                SET nome = ?, email = ?, id_tipo_usuario = ?, id_departamento = ?
+                WHERE id_usuario = ?
+            ");
+            $stmt->execute([$nome, $email, $id_tipo_usuario, $id_departamento, $id_usuario]);
+            return true;
+        } catch (PDOException $erroUpdater) {
+            throw new Exception("Erro ao atualizar usuário: " . $erroUpdater->getMessage());
+        }
+    }
+
+
+
+
+
 }
