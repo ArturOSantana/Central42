@@ -12,24 +12,19 @@ $usuarioModelo = new Usuario("", "", "", "", "");
 $mensagem = "";
 $tipo_mensagem = "";
 
-if (isset($_GET['excluir'])) {
+if (isset($_GET['excluir'])) { 
     $id_excluir = $_GET['excluir'];
 
-    try {
+  
         $usuarioModelo->excluirUsuario($con, $id_excluir, $_SESSION['id']);
         $mensagem = "Usuário excluído com sucesso!";
         $tipo_mensagem = "success";
-    } catch (Exception $erroDeletar) {
-        $mensagem = $erroDeletar->getMessage();
-    }
+   
 }
 
-try {
+
     $usuarios = $usuarioModelo->listarTodos($con);
-} catch (Exception $erronaFuncao) {
-    $mensagem = $erronaFuncao->getMessage();
 
-}
 ?>
 
 <main class="management-container">

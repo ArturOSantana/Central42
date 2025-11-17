@@ -13,18 +13,14 @@ require_once "validador_acesso.php";
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-
-  <!-- CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-  <!-- Cabeçalho -->
   <header>
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="index.php">
-        <img src="logo.png" alt="Logo  Help Desk">
+        <img src="img/Gemini_Generated_Image_xny45nxny45nxny4.png" alt="Logo  Help Desk">
          Help Desk
       </a>
        <ul class="navbar-nav">

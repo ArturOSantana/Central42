@@ -6,7 +6,7 @@ include "cabecalho_logado.php";
   <div class="row">
     <aside class="col-md-3 col-lg-2 bg-light border-end p-3 sidebar">
       <div class="text-center mb-4">
-        <img src="user.png" alt="Usuário" width="80" class="rounded-circle mb-2">
+        <img src="img/logo.png" alt="Usuário" width="80" class="rounded-circle mb-2">
         <h5 class="mb-0"><?php echo $_SESSION['nome']; ?></h5>
         <small class="text-muted"><?php echo $_SESSION['email']; ?></small>
       </div>
@@ -21,6 +21,9 @@ include "cabecalho_logado.php";
       <?php if($_SESSION['id_tipo_usuario'] == "3"){ ?>
         <a href="gerenciar_usuarios.php" class="btn btn-outline-primary w-100 mb-2">
           Gerenciar Usuários
+        </a>
+          <a href="cadastro.php" class="btn btn-outline-primary w-100 mb-2">
+          Cadastrar Usuario
         </a>
       <?php } ?>
       
@@ -37,13 +40,13 @@ include "cabecalho_logado.php";
             <div class="row text-center">
               <div class="col-md-6 mb-4 menu-option">
                 <a href="abrir_chamado.php">
-                  <img src="formulario_abrir_chamado.png" alt="Abrir Chamado" class="img-fluid" style="max-width:150px;">
+                  <img src="/img/formulario_abrir_chamado.png" alt="Abrir Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Abrir Chamado</p>
               </div>
               <div class="col-md-6 mb-4 menu-option">
                 <a href="consultar_chamado.php">
-                  <img src="formulario_consultar_chamado.png" alt="Consultar Chamado" class="img-fluid" style="max-width:150px;">
+                  <img src="img/formulario_abrir_chamado.png" alt="Consultar Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Consultar Chamado</p>
               </div>

@@ -7,7 +7,7 @@ require "classes/Chamado.php";
 $chamado  = new Chamado($_POST["titulo"],$_POST["descricao"],$_POST["id_categoria"],$_SESSION['id_departamento'],$_SESSION['id']);
 
 
-$chamado -> abrir($con); // ABRI CHAMADO 
+$chamado -> abrir($con); 
 
 
 
