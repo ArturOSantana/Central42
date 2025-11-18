@@ -5,9 +5,8 @@ include "classes/Chamado.php";
 
 $chamado = new Chamado("", "", "", "", "");
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+
+
 ?>
 <main class="container mt-4">
   <section class="row">
@@ -29,14 +28,14 @@ echo "</pre>";
 
           if ($perfil_id == 3) {
             $chamados = $chamado->listarTodos($con);
-          } elseif ($perfil_id == 2 ) {
+          } elseif ($perfil_id == 2) {
             /// CHAMADOS POR DEPARTAMENTO
             $chamados = $chamado->listarPorDepartamento($con, $dep_id);
           } else {
             // VER APENAS OS SEUS CHAMADOS
             $chamados = $chamado->listarPorUsuario($con, $user_id);
           }
-
+          
           if (count($chamados) === 0) {
             echo '<p class="text-muted text-center mt-3">Nenhum chamado encontrado.</p>';
           } else {
@@ -46,7 +45,6 @@ echo "</pre>";
                 <div class="card-body">
                   <h5 class="card-title text-primary"><?php echo ($chamado['titulo']); ?></h5>
                   <h6 class="card-subtitle mb-2 text-muted">
-                    Categoria: <?php echo ($chamado['categoria']); ?> |
                     Status:
                     <?php if ($chamado['status'] == 'Aberto') { ?>
                       <span class="text-success">

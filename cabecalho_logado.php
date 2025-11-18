@@ -17,7 +17,7 @@ require_once "validador_acesso.php";
 <body>
   <header>
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">
+      <a class="navbar-brand" href="home.php">
         <img src="img/Gemini_Generated_Image_xny45nxny45nxny4.png" alt="Logo  Help Desk">
          Help Desk
       </a>

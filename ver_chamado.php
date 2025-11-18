@@ -10,7 +10,7 @@ include "classes/Chamado.php";
 $id_chamado = $_GET['id'];
 
 $chamados = new Chamado();
- $chamado = $chamados -> visualizarChamado($con,$id_chamado);
+$chamado = $chamados->visualizarChamado($con, $id_chamado);
 
 ?>
 
@@ -32,15 +32,15 @@ $chamados = new Chamado();
             <div class="row"> -
                 <div class="col-md-6">
                     <p><strong>Status:</strong>
-                       <?php if ($chamado['status'] == 'Aberto') { ?>
-                      <span class="text-success">
-                        <?php echo $chamado['status']; ?>
-                      </span>
-                    <?php } else { ?>
-                      <span class="text-danger">
-                        <?php echo $chamado['status']; ?>
-                      </span>
-                    <?php } ?>
+                        <?php if ($chamado['status'] == 'Aberto') { ?>
+                            <span class="text-success">
+                                <?php echo $chamado['status']; ?>
+                            </span>
+                        <?php } else { ?>
+                            <span class="text-danger">
+                                <?php echo $chamado['status']; ?>
+                            </span>
+                        <?php } ?>
                     </p>
                 </div>
                 <div class="col-md-6 text-md-end">
@@ -50,11 +50,6 @@ $chamados = new Chamado();
                 </div>
             </div>
 
-               <div class="col-md-6 text-md-end">
-                    <p><strong>AVALIAÇÃO do CHAMADO:</strong>
-                        <?php echo ($chamado['data_abertura']); ?>
-                    </p>
-                </div>
 
             <p><strong>Usuário:</strong> <?php echo $chamado['nome_usuario']; ?></p>
             <p><strong>Departamento:</strong> <?php echo $chamado['nome_departamento']; ?></p>
@@ -64,16 +59,16 @@ $chamados = new Chamado();
                     <button type="submit" class="btn btn-danger">Fechar Chamado</button>
                 </form>
             <?php } ?>
-                    </p>
-                </div>
-
-
-
-            <div class="mt-4">
-                <a href="consultar_chamado.php" class="btn btn-outline-secondary">Voltar</a>
-            </div>
-
+            </p>
         </div>
+
+
+
+        <div class="mt-4">
+            <a href="consultar_chamado.php" class="btn btn-outline-secondary">Voltar</a>
+        </div>
+
+    </div>
     </div>
 </main>
 
