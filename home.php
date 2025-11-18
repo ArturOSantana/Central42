@@ -40,13 +40,13 @@ include "cabecalho_logado.php";
             <div class="row text-center">
               <div class="col-md-6 mb-4 menu-option">
                 <a href="abrir_chamado.php">
-                  <img src="/img/formulario_abrir_chamado.png" alt="Abrir Chamado" class="img-fluid" style="max-width:150px;">
+                  <img src="img/formulario_abrir_chamado.png" alt="Abrir Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Abrir Chamado</p>
               </div>
               <div class="col-md-6 mb-4 menu-option">
                 <a href="consultar_chamado.php">
-                  <img src="img/formulario_abrir_chamado.png" alt="Consultar Chamado" class="img-fluid" style="max-width:150px;">
+                  <img src="img/formulario_consultar_chamado.png" alt="Consultar Chamado" class="img-fluid" style="max-width:150px;">
                 </a>
                 <p class="mt-2">Consultar Chamado</p>
               </div>

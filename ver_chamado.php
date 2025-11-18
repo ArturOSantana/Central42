@@ -59,6 +59,12 @@ $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
                 </div>
             </div>
 
+               <div class="col-md-6 text-md-end">
+                    <p><strong>AVALIAÇÃO do CHAMADO:</strong>
+                        <?php echo ($chamado['data_abertura']); ?>
+                    </p>
+                </div>
+
             <p><strong>Usuário:</strong> <?php echo $chamado['nome_usuario']; ?></p>
             <p><strong>Departamento:</strong> <?php echo $chamado['nome_departamento']; ?></p>
             <?php if ($_SESSION['id_tipo_usuario'] == 2 || $_SESSION['id_tipo_usuario'] == 3 && $chamado['status'] == 'Aberto') { ?>
@@ -67,6 +73,8 @@ $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
                     <button type="submit" class="btn btn-danger">Fechar Chamado</button>
                 </form>
             <?php } ?>
+                    </p>
+                </div>
 
 
 

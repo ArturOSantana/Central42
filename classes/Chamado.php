@@ -66,7 +66,7 @@ class Chamado
         }
     }
 
-    public static function listarPorUsuario(PDO $con, $idUsuario) // cada usuario pode ver o seu ID = 1
+    public  function listarPorUsuario(PDO $con, $idUsuario) // cada usuario pode ver o seu ID = 1
     {
         $sql = "SELECT * FROM chamados WHERE id_usuario = :id_usuario ORDER BY data_abertura DESC";
         $stmt = $con->prepare($sql);
@@ -75,7 +75,7 @@ class Chamado
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function listarPorDepartamento(PDO $con, $idDepartamento) // O ID É iGUAL 2
+    public  function listarPorDepartamento(PDO $con, $idDepartamento) // O ID É iGUAL 2
     {
         $sql = "SELECT * FROM chamados WHERE id_departamento = :id_departamento ORDER BY data_abertura DESC";
         $stmt = $con->prepare($sql);
@@ -84,11 +84,16 @@ class Chamado
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function listarTodos(PDO $con) // O ID É IGUAL 3
+    public function listarTodos(PDO $con) // O ID É IGUAL 3
     {
         $sql = "SELECT * FROM chamados ORDER BY data_abertura DESC";
         $stmt = $con->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function visualizarChamado($id){
+        
     }
 }
