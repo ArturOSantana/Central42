@@ -2,24 +2,15 @@
 include "cabecalho_logado.php";
 include "con.php";
 session_start();
+include "classes/Chamado.php";
 
 
 
 
 $id_chamado = $_GET['id'];
 
-$stmt = $con->prepare(" SELECT 
-        c.*, 
-        u.nome AS nome_usuario,
-        u.email,
-        d.nome AS nome_departamento
-    FROM chamados AS c
-    INNER JOIN usuarios AS u ON u.id_usuario = c.id_usuario
-    INNER JOIN departamentos AS d ON d.id_departamento = c.id_departamento
-    WHERE c.id_chamado = :id");
-$stmt->bindParam(":id", $id_chamado);
-$stmt->execute();
-$chamado = $stmt->fetch(PDO::FETCH_ASSOC);
+$chamados = new Chamado();
+$chamados -> visualizarChamado($con,$id_chamado);
 
 ?>
 

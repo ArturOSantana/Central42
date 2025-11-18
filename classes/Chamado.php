@@ -13,7 +13,7 @@ class Chamado
     private $dataFechamento;
 
 
-    public function __construct($titulo, $descricao, $categoria, $departamento, $usuario)
+    public function __construct($titulo="", $descricao="", $categoria="", $departamento="", $usuario="")
     {
         $this->titulo = $titulo;
         $this->descricao = $descricao;
@@ -93,7 +93,24 @@ class Chamado
     }
 
 
-    public function visualizarChamado($id){
-        
+    public function visualizarChamado($con, $id_chamado)
+    {
+        try {
+
+            $stmt = $con->prepare(" SELECT 
+        c.*, 
+        u.nome AS nome_usuario,
+        u.email,
+        d.nome AS nome_departamento
+    FROM chamados AS c
+    INNER JOIN usuarios AS u ON u.id_usuario = c.id_usuario
+    INNER JOIN departamentos AS d ON d.id_departamento = c.id_departamento
+    WHERE c.id_chamado = :id");
+            $stmt->bindParam(":id", $id_chamado);
+            $stmt->execute();
+            $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $erroAoMostrarChamados) {
+            echo "Erro ao mostrar os chamados, busque o adm" . $erroAoMostrarChamados->getMessage();
+        }
     }
 }

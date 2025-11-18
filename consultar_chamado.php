@@ -25,7 +25,7 @@ $chamado = new Chamado("", "", "", "", "");
 
           if ($perfil_id == 3) {
             $chamados = $chamado->listarTodos($con);
-          } elseif ($perfil_id == 2) {
+          } elseif ($perfil_id == 2 || $perfil_id == 3) {
             /// CHAMADOS POR DEPARTAMENTO
             $chamados = $chamado->listarPorDepartamento($con, $dep_id);
           } else {
