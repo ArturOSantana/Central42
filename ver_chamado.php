@@ -10,7 +10,7 @@ include "classes/Chamado.php";
 $id_chamado = $_GET['id'];
 
 $chamados = new Chamado();
-$chamados -> visualizarChamado($con,$id_chamado);
+ $chamado = $chamados -> visualizarChamado($con,$id_chamado);
 
 ?>
 
@@ -29,7 +29,7 @@ $chamados -> visualizarChamado($con,$id_chamado);
 
             <hr>
 
-            <div class="row">
+            <div class="row"> -
                 <div class="col-md-6">
                     <p><strong>Status:</strong>
                        <?php if ($chamado['status'] == 'Aberto') { ?>
@@ -59,7 +59,7 @@ $chamados -> visualizarChamado($con,$id_chamado);
             <p><strong>Usuário:</strong> <?php echo $chamado['nome_usuario']; ?></p>
             <p><strong>Departamento:</strong> <?php echo $chamado['nome_departamento']; ?></p>
             <?php if ($_SESSION['id_tipo_usuario'] == 2 || $_SESSION['id_tipo_usuario'] == 3 && $chamado['status'] == 'Aberto') { ?>
-                <form action="fechar_chamado.php?get=$_GET['id_chamado'] method="get" class="mt-3">
+                <form action="fechar_chamado.php?get=$_GET['id_chamado']" method="get" class="mt-3">
                     <input type="hidden" name="id_chamado" value="<?php echo $id_chamado; ?>">
                     <button type="submit" class="btn btn-danger">Fechar Chamado</button>
                 </form>

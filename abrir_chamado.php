@@ -27,12 +27,12 @@ $categoria = new Categoria();
 
             <div class="form-group">
               <label for="categoria">Categoria</label>
-              <select id="categoria" name="categoria" class="form-control" required>
+              <select id="categoria" name="id_categoria" class="form-control" required>
                 <option value="">SELECIONE UMA CATEGORIA</option>
                 <?php
                 $opçoes = $categoria->exibirCategorias($con);
                 foreach ($opçoes as $cat) {
-                  echo "<option value='" . $cat['nome_categoria'] . "'>"
+                  echo "<option value='".$cat['id_categoria'] . "'>"
                     . $cat['nome_categoria'] . " — (" . $cat['nome_departamento'] . ")"
                     . "</option>";
                 }

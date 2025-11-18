@@ -2,10 +2,20 @@
 class Categoria
 {
 
+    public function dept($con, $idCategoria)
+{
+    $sql = "SELECT id_departamento FROM categorias WHERE id_categoria = :id";
+    $stmt = $con->prepare($sql);
+    $stmt->bindParam(":id", $idCategoria);
+    $stmt->execute();
+    return $stmt->fetchColumn(); 
+}
+
+
     public function exibirCategorias($con)
     {
         $stmt = $con->prepare(
-        "SELECT 
+            "SELECT 
          c.id_categoria, 
          c.nome_categoria, 
          d.nome AS nome_departamento

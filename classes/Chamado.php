@@ -13,7 +13,7 @@ class Chamado
     private $dataFechamento;
 
 
-    public function __construct($titulo="", $descricao="", $categoria="", $departamento="", $usuario="")
+    public function __construct($titulo = "", $descricao = "", $categoria = "", $departamento = "", $usuario = "")
     {
         $this->titulo = $titulo;
         $this->descricao = $descricao;
@@ -25,18 +25,21 @@ class Chamado
     }
 
 
-    public function abrir(PDO $con) // PARA ABRIR O CHAMADO
+    public function abrir($con, $depResponsavel) // PARA ABRIR O CHAMADO
     {
         try {
+
+
             $sql = "INSERT INTO chamados (titulo, id_categoria, descricao, status, id_usuario, id_departamento, data_abertura) 
                 VALUES (:titulo, :categoria, :descricao, :status, :id_usuario, :id_departamento, :data_abertura)";
             $stmt = $con->prepare($sql);
+
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':categoria', $this->categoria);
             $stmt->bindParam(':descricao', $this->descricao);
             $stmt->bindParam(':status', $this->status);
             $stmt->bindParam(':id_usuario', $this->usuario);
-            $stmt->bindParam(':id_departamento', $this->departamento);
+            $stmt->bindParam(':id_departamento', $depResponsavel);
             $stmt->bindParam(':data_abertura', $this->dataAbertura);
             $stmt->execute();
             header("location:abrir_chamado.php");
@@ -97,18 +100,12 @@ class Chamado
     {
         try {
 
-            $stmt = $con->prepare(" SELECT 
-        c.*, 
-        u.nome AS nome_usuario,
-        u.email,
-        d.nome AS nome_departamento
-    FROM chamados AS c
-    INNER JOIN usuarios AS u ON u.id_usuario = c.id_usuario
-    INNER JOIN departamentos AS d ON d.id_departamento = c.id_departamento
-    WHERE c.id_chamado = :id");
+            $stmt = $con->prepare("SELECT 
+                    c.*, u.nome AS nome_usuario,  u.email,
+ d.nome AS nome_departamento   FROM chamados AS c INNER JOIN usuarios AS u  ON u.id_usuario = c.id_usuario INNER JOIN departamentos AS d  ON d.id_departamento = c.id_departamento  WHERE c.id_chamado = :id");
             $stmt->bindParam(":id", $id_chamado);
             $stmt->execute();
-            $chamado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $erroAoMostrarChamados) {
             echo "Erro ao mostrar os chamados, busque o adm" . $erroAoMostrarChamados->getMessage();
         }

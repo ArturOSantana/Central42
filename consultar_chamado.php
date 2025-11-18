@@ -4,6 +4,10 @@ include "con.php";
 include "classes/Chamado.php";
 
 $chamado = new Chamado("", "", "", "", "");
+
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 ?>
 <main class="container mt-4">
   <section class="row">
@@ -25,7 +29,7 @@ $chamado = new Chamado("", "", "", "", "");
 
           if ($perfil_id == 3) {
             $chamados = $chamado->listarTodos($con);
-          } elseif ($perfil_id == 2 || $perfil_id == 3) {
+          } elseif ($perfil_id == 2 ) {
             /// CHAMADOS POR DEPARTAMENTO
             $chamados = $chamado->listarPorDepartamento($con, $dep_id);
           } else {
