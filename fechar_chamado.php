@@ -1,5 +1,5 @@
 <?php
-include "con.php";
+include "conn.php";
 include "classes/Chamado.php";
 session_start();
 

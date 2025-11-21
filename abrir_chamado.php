@@ -1,6 +1,6 @@
 <?php 
 include "cabecalho_logado.php";
-include "con.php";
+include "conn.php";
 
 include "classes/Departamento.php";
 $depar = new Departamento();

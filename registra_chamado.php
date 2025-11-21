@@ -2,7 +2,7 @@
 session_start();
 
 
-require "con.php";
+require "conn.php";
 require "classes/Chamado.php";
 
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "con.php";
+require "conn.php";
 $usuario_autenticado = false;
 require "classes/Usuario.php";
 

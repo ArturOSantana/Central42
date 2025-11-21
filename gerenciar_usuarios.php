@@ -1,6 +1,6 @@
 <?php
 include "cabecalho_logado.php";
-include "con.php";
+include "conn.php";
 include "classes/Usuario.php";
 
 if ($_SESSION['id_tipo_usuario'] != 3) {

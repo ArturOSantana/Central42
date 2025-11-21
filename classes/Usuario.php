@@ -47,6 +47,7 @@ class Usuario
 
 
                 $_SESSION['autenticado'] = "SIM";
+                $_SESSION['email'] = $user['email'];
                 $_SESSION['id'] = $user['id_usuario'];
                 $_SESSION['nome'] = $user['nome'];
                 $_SESSION['id_tipo_usuario'] = $user['id_tipo_usuario'];

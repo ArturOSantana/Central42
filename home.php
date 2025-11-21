@@ -27,7 +27,7 @@ include "cabecalho_logado.php";
         </a>
       <?php } ?>
       
-      <a href="logout.php" class="btn btn-outline-danger w-100 mt-2">Sair</a>
+      <a href="logoff.php" class="btn btn-outline-danger w-100 mt-2">Sair</a>
     </aside>
 
     <section class="col-md-9 col-lg-10 p-4">
