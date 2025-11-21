@@ -51,6 +51,7 @@ class Usuario
                 $_SESSION['nome'] = $user['nome'];
                 $_SESSION['id_tipo_usuario'] = $user['id_tipo_usuario'];
                 $_SESSION['id_departamento'] = $user['id_departamento'];
+                $_SESSION['perfil_id'] = $user['id_tipo_usuario'];
 
                 $this->carregarInfoUsuario($con, $user['id_departamento'], $user['id_tipo_usuario'],);
 
@@ -108,14 +109,13 @@ class Usuario
 
             $stmt = $con->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
             $stmt->execute([$id_usuario]);
-
         } catch (PDOException $eerroaoapagar) {
             throw new Exception("Erro ao excluir usuário: " . $eerroaoapagar->getMessage());
         }
     }
 
 
-public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usuario, $id_departamento)
+    public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usuario, $id_departamento)
     {
         try {
             $stmt = $con->prepare("
@@ -129,9 +129,4 @@ public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usua
             throw new Exception("Erro ao atualizar usuário: " . $erroUpdater->getMessage());
         }
     }
-
-
-
-
-
 }

@@ -1,7 +1,10 @@
 <?php
 session_start();
+
+
 require "con.php";
 require "classes/Chamado.php";
+
 
 $chamado = new Chamado(
     $_POST["titulo"],
