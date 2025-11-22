@@ -108,8 +108,9 @@ class Usuario
                 throw new Exception("Não é possível excluir seu próprio usuário!");
             }
 
-            $stmt = $con->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
-            $stmt->execute([$id_usuario]);
+            $stmt = $con->prepare("DELETE FROM usuarios WHERE id_usuario = :id");
+            $stmt->bindParam(':id', $id_usuario);
+            $stmt->execute();
         } catch (PDOException $eerroaoapagar) {
             throw new Exception("Erro ao excluir usuário: " . $eerroaoapagar->getMessage());
         }
@@ -117,17 +118,67 @@ class Usuario
 
 
     public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usuario, $id_departamento)
-    {
-        try {
-            $stmt = $con->prepare("
-                UPDATE usuarios 
-                SET nome = ?, email = ?, id_tipo_usuario = ?, id_departamento = ?
-                WHERE id_usuario = ?
-            ");
-            $stmt->execute([$nome, $email, $id_tipo_usuario, $id_departamento, $id_usuario]);
-            return true;
-        } catch (PDOException $erroUpdater) {
-            throw new Exception("Erro ao atualizar usuário: " . $erroUpdater->getMessage());
+{
+    try {
+        $stmt_check = $con->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND id_usuario != :id");
+       $stmt_check -> bindParam(":email",$email);
+        $stmt_check -> bindParam(":id",$id_usuario);
+        $stmt_check->execute();
+
+        
+
+        $stmt = $con->prepare("
+            UPDATE usuarios 
+            SET nome = :nome, email = :email, id_tipo_usuario = :tipo_user, id_departamento = :iddep
+            WHERE id_usuario = :id
+        ");
+        $stmt->bindParam(":nome",$nome);
+        $stmt->bindParam(":email",$email);
+        $stmt->bindParam(":tipo_user",$id_tipo_usuario);
+        $stmt->bindParam(":idep",$id_departamento);
+        $stmt->bindParam(":id",$id_usuario);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $erroAoAtualizar) {
+        throw new Exception("Erro ao atualizar usuário: " . $erroAoAtualizar->getMessage());
+    }
+}
+    public function carregarUsuario($con,$id_usuario){
+        try{
+            $stmt = $con -> prepare(
+                "SELECT u.id_usuario, u.nome, u.email, u.id_tipo_usuario,u.id_departamento,
+                        d.nome AS departamento_nome, t.nome_tipo AS tipo_nome
+                FROM usuario AS u
+                LEFT JOIN departamentos AS d ON u.id_departamento = d.id_departamento
+                LEFT JOIN tipos_usuario AS t ON u.id_tipo_usuario = t.id_tipo_usuario
+                WHERE u.id_usuario = :id;");
+            $stmt -> bindParam(":id",$id_usuario);
+            $stmt -> execute();
+           return $stmt -> fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $erroAoCarregar){
+            echo "Erro ao carregar Usuario" . $erroAoCarregar -> getMessage();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
