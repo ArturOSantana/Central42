@@ -135,7 +135,7 @@ class Usuario
         $stmt->bindParam(":nome",$nome);
         $stmt->bindParam(":email",$email);
         $stmt->bindParam(":tipo_user",$id_tipo_usuario);
-        $stmt->bindParam(":idep",$id_departamento);
+        $stmt->bindParam(":iddep",$id_departamento);
         $stmt->bindParam(":id",$id_usuario);
         $stmt->execute();
         return true;
@@ -148,13 +148,13 @@ class Usuario
             $stmt = $con -> prepare(
                 "SELECT u.id_usuario, u.nome, u.email, u.id_tipo_usuario,u.id_departamento,
                         d.nome AS departamento_nome, t.nome_tipo AS tipo_nome
-                FROM usuario AS u
+                FROM usuarios AS u
                 LEFT JOIN departamentos AS d ON u.id_departamento = d.id_departamento
                 LEFT JOIN tipos_usuario AS t ON u.id_tipo_usuario = t.id_tipo_usuario
                 WHERE u.id_usuario = :id;");
             $stmt -> bindParam(":id",$id_usuario);
             $stmt -> execute();
-           return $stmt -> fetch(PDO::FETCH_ASSOC);
+           return $stmt -> fetch(PDO::FETCH_ASSOC); //PRECISA SER FETCH apenas, não FETCHALL
         } catch(PDOException $erroAoCarregar){
             echo "Erro ao carregar Usuario" . $erroAoCarregar -> getMessage();
         }
@@ -164,7 +164,16 @@ class Usuario
 
 
 
-
+public function mostrarTipos($con)
+{
+    try {
+        $stmt = $con->prepare("SELECT * FROM tipos_usuario");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        throw new Exception("Erro ao carregar tipos: " . $e->getMessage());
+    }
+}
 
 
 
