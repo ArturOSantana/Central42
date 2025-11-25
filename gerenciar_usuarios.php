@@ -10,7 +10,7 @@ if ($_SESSION['id_tipo_usuario'] != 3) {
 
 $usuarioModelo = new Usuario("", "", "", "", "");
 $mensagem = "";
-$tipo_mensagem = "";
+$tipo_mensagem = "danger";
 
 if (isset($_GET['excluir'])) { 
     $id_excluir = $_GET['excluir'];
