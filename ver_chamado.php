@@ -54,10 +54,29 @@ $avaliou = $avaliacao->vericarFeedback($con, $chamado["id_chamado"])
                 </form>
             <?php } ?>
             <!-- FEEDBACK-->
-            <?php if ($chamado['status'] == 'Fechado' && $chamado["id_usuario"] == $_SESSION["id"]) { ?>
+            <?php if ($chamado['status'] == 'Fechado') { ?>
 
-                <?php if ($avaliou == false) { ?>
-                    <form action="enviar_feedback.php" method="POST">
+                <?php if ($avaliou == true) { ?>
+                     <div class="mt-4 p-3 border rounded bg-light">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Nota: <?php echo $avaliou["nota"]; ?> </p>
+                            </div>
+
+                            <div class="col-md-6 text-md-end">
+                                <p> Avaliado em: <?php echo $avaliou["data_feedback"]; ?> </p>
+                            </div>
+                        </div>
+                        <p>Comentário: </p>
+                        <p class="border rounded p-2 bg-white"> <?php if (empty($avaliou["comentario"])) {
+                                                                    echo "O USUARIO NÃO ADICIONOU COMENTARIO" . "</p>" ?> 
+                                                                <?php } else {
+                                                                                                                                                       echo $avaliou["comentarrio"] . "</p>" ?>
+                            <?php }
+                                                                                                                        "</p>" ?>
+                   
+                <?php }  elseif ($chamado["id_usuario"] == $_SESSION["id"]){?>
+                   <form action="enviar_feedback.php" method="POST">
 
                         <!--ENVIA O ID DO CHAMADO PARA O FEEDBACK -->
                         <input type="hidden" name="id_chamado" value="<?php echo $id_chamado; ?>">
@@ -90,23 +109,22 @@ $avaliou = $avaliacao->vericarFeedback($con, $chamado["id_chamado"])
 
                         <button type="submit" class="btn btn-warning">Enviar Avaliação</button>
                     </form>
-                <?php } else { ?>
-                    <div class="mt-4 p-3 border rounded bg-light">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>
-                            </div>
 
-
-                        <?php } ?>
-                    <?php } ?>
-
-                    <div class="mt-4">
-                        <a href="consultar_chamado.php" class="btn btn-outline-secondary">Voltar</a>
-                    </div>
-
+                      
+                    <?php } else {?>
+                        <div  class="mt-4 p-3 border rounded bg-light>
+                        <p class="text-muted mb-0"> Chamado ainda não avaliado </p>
                         </div>
+                        <?php }?>
+                      <?php } ?>
+
+
+                        <div class="mt-4">
+                            <a href="consultar_chamado.php" class="btn btn-outline-secondary">Voltar</a>
+                        </div>
+
                     </div>
+        </div>
 </main>
 
 <?php include "rodape.php"; ?>
