@@ -28,7 +28,6 @@
             <button class="btn btn-lg btn-info btn-block btn-login" type="submit">Entrar</button>
           </form>
           <br>
-       
         </div>
       </div>
     </article>
