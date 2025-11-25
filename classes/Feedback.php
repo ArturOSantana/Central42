@@ -35,8 +35,18 @@ class Feedback
         }
     }
 
-    public function salvarFeedback() {
+    public function vericarFeedback($con,$id) {
+        $stmt = $con -> prepare("SELECT * FROM feedbacks WHERE id_chamado = :id;");
+        $stmt -> bindParam(":id",$id);
+        $stmt -> execute();
+        if($stmt -> rowCount()>0){
+            return $stmt -> fetch(PDO::FETCH_ASSOC);
+        } else{
+            return false;
+        }
+        
 
+       
     }
 
 
