@@ -5,7 +5,7 @@ session_start();
 
 $idChamado = $_POST["id_chamado"];
 $nota = $_POST["nota"];
-$comentarios = $_POST['comentarios'];
+$comentarios = $_POST['comentario'];
 
 
 

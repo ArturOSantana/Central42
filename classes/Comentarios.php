@@ -1,0 +1,49 @@
+<!-- FORMULÁRIO DE COMENTÁRIO -->
+<div class="mt-4 p-3 border rounded bg-light">
+    <h6 class="mb-3">💬 Adicionar Comentário</h6>
+    <form action="adicionar_comentario.php" method="POST">
+        <input type="hidden" name="id_chamado" value="123"> <!-- ID será preenchido via PHP depois -->
+        
+        <div class="mb-3">
+            <textarea class="form-control" name="comentario" rows="3" 
+                      placeholder="Digite seu comentário..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-sm">
+            📤 Enviar Comentário
+        </button>
+    </form>
+</div>
+
+<!-- LISTA DE COMENTÁRIOS (EXEMPLO ESTÁTICO) -->
+<div class="mt-4">
+    <h6>💬 Comentários (2)</h6>
+    
+    <!-- Comentário 1 -->
+    <div class="card mb-2">
+        <div class="card-body py-2">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <strong>João Silva</strong>
+                    <small class="text-muted">- TI</small>
+                </div>
+                <small class="text-muted">20/11/2025 14:30</small>
+            </div>
+            <p class="mb-0 mt-1">Vou verificar esse problema ainda hoje.</p>
+        </div>
+    </div>
+    
+    <!-- Comentário 2 -->
+    <div class="card mb-2">
+        <div class="card-body py-2">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <strong>Maria Santos</strong>
+                    <small class="text-muted">- RH</small>
+                </div>
+                <small class="text-muted">20/11/2025 15:45</small>
+            </div>
+            <p class="mb-0 mt-1">Problema resolvido! Pode fechar o chamado.</p>
+        </div>
+    </div>
+</div>
