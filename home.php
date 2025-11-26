@@ -56,7 +56,7 @@ include "cabecalho_logado.php";
                   <a href="gerenciar_usuarios.php">
                     <img src="img/gerenciar_usuarios.png" alt="Gerenciar Usuários" class="img-fluid" style="max-width:150px;">
                   </a>
-                  <p class="mt-2">Gerenciar Usuários</p>
+                  <p class="mt-4">Gerenciar Usuários</p>
                 </div>
               <?php } ?>
             </div>
