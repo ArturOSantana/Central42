@@ -1,4 +1,8 @@
-<?php include "cabecalho_logado.php"; ?>
+<?php include "cabecalho_logado.php";
+include "conn.php";
+include "classes/Departamento.php";
+$depar = new Departamento();
+?>
 
 
 <main class="container">
@@ -33,13 +37,20 @@
                 <option value="3">SuperAdmin</option>
               </select>
             </div>
+            
+            
 
             <div class="form-group mb-3">
               <select name="id_departamento" class="form-control">
-                <option value="">Selecione o departamento</option>
-                <option value="1">TI</option>
-                <option value="2">RH</option>
-                <option value="3">Financeiro</option>
+                             
+                  <option value="">A qual departamento o usuario pertence:</option>
+                  <?php
+                  $departamentos = $depar->mostrarDep($con);
+
+                  foreach ($departamentos as $depto) {
+                    echo "<option value='{$depto['id_departamento']}'>{$depto['nome']}</option>";
+                  }
+                  ?>
               </select>
             </div>
 
