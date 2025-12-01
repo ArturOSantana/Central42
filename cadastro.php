@@ -1,4 +1,4 @@
-<?php include "cabecalho.php"; ?>
+<?php include "cabecalho_logado.php"; ?>
 
 
 <main class="container">
@@ -24,9 +24,6 @@
               <input type="password" name="senha" class="form-control" placeholder="Senha" required>
             </div>
 
-            <div class="form-group mb-3">
-              <input type="password" name="confirmar_senha" class="form-control" placeholder="Confirmar senha" required>
-            </div>
 
             <div class="form-group mb-3">
               <select name="id_tipo_usuario" class="form-control" required>
@@ -37,7 +34,7 @@
               </select>
             </div>
 
-            <div class="form-group mb-4">
+            <div class="form-group mb-3">
               <select name="id_departamento" class="form-control">
                 <option value="">Selecione o departamento</option>
                 <option value="1">TI</option>

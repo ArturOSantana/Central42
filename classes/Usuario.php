@@ -28,7 +28,8 @@ class Usuario
             $stmy->bindParam(':tipo_usuario', $this->id_tipo_usuario);
             $stmy->bindParam(':id_departamento', $this->id_departamento);
             $stmy->execute();
-            header("location:index.php?logincomsucesso");
+            header("location:home.php");
+           
         } catch (PDOException $erroCadastro) {
 
             $erro = "Erro ao Cadastrar Usuario" + $erroCadastro->getMessage();
@@ -101,7 +102,7 @@ class Usuario
             throw new Exception("Erro ao listar usuários: " . $e->getMessage());
         }
     }
-    public function excluirUsuario($con, $id_usuario, $id_usuario_logado = null)
+    public function excluirUsuario($con, $id_usuario, $id_usuario_logado)
     {
         try {
             if ($id_usuario == $id_usuario_logado) {
@@ -112,51 +113,53 @@ class Usuario
             $stmt->bindParam(':id', $id_usuario);
             $stmt->execute();
         } catch (PDOException $eerroaoapagar) {
-            throw new Exception("Erro ao excluir usuário: " . $eerroaoapagar->getMessage());
+            echo "Erro ao excluir usuário: " . $eerroaoapagar->getMessage();
         }
     }
 
 
     public function atualizarUsuario($con, $id_usuario, $nome, $email, $id_tipo_usuario, $id_departamento)
-{
-    try {
-        $stmt_check = $con->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND id_usuario != :id");
-       $stmt_check -> bindParam(":email",$email);
-        $stmt_check -> bindParam(":id",$id_usuario);
-        $stmt_check->execute();
+    {
+        try {
+            $stmt_check = $con->prepare("SELECT id_usuario FROM usuarios WHERE email = :email AND id_usuario != :id");
+            $stmt_check->bindParam(":email", $email);
+            $stmt_check->bindParam(":id", $id_usuario);
+            $stmt_check->execute();
 
-        
 
-        $stmt = $con->prepare("
+
+            $stmt = $con->prepare("
             UPDATE usuarios 
             SET nome = :nome, email = :email, id_tipo_usuario = :tipo_user, id_departamento = :iddep
             WHERE id_usuario = :id
         ");
-        $stmt->bindParam(":nome",$nome);
-        $stmt->bindParam(":email",$email);
-        $stmt->bindParam(":tipo_user",$id_tipo_usuario);
-        $stmt->bindParam(":iddep",$id_departamento);
-        $stmt->bindParam(":id",$id_usuario);
-        $stmt->execute();
-        return true;
-    } catch (PDOException $erroAoAtualizar) {
-        throw new Exception("Erro ao atualizar usuário: " . $erroAoAtualizar->getMessage());
+            $stmt->bindParam(":nome", $nome);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":tipo_user", $id_tipo_usuario);
+            $stmt->bindParam(":iddep", $id_departamento);
+            $stmt->bindParam(":id", $id_usuario);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $erroAoAtualizar) {
+            throw new Exception("Erro ao atualizar usuário: " . $erroAoAtualizar->getMessage());
+        }
     }
-}
-    public function carregarUsuario($con,$id_usuario){
-        try{
-            $stmt = $con -> prepare(
+    public function carregarUsuario($con, $id_usuario)
+    {
+        try {
+            $stmt = $con->prepare(
                 "SELECT u.id_usuario, u.nome, u.email, u.id_tipo_usuario,u.id_departamento,
                         d.nome AS departamento_nome, t.nome_tipo AS tipo_nome
                 FROM usuarios AS u
                 LEFT JOIN departamentos AS d ON u.id_departamento = d.id_departamento
                 LEFT JOIN tipos_usuario AS t ON u.id_tipo_usuario = t.id_tipo_usuario
-                WHERE u.id_usuario = :id;");
-            $stmt -> bindParam(":id",$id_usuario);
-            $stmt -> execute();
-           return $stmt -> fetch(PDO::FETCH_ASSOC); //PRECISA SER FETCH apenas, não FETCHALL
-        } catch(PDOException $erroAoCarregar){
-            echo "Erro ao carregar Usuario" . $erroAoCarregar -> getMessage();
+                WHERE u.id_usuario = :id;"
+            );
+            $stmt->bindParam(":id", $id_usuario);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC); //PRECISA SER FETCH apenas, não FETCHALL
+        } catch (PDOException $erroAoCarregar) {
+            echo "Erro ao carregar Usuario" . $erroAoCarregar->getMessage();
         }
     }
 
@@ -164,30 +167,14 @@ class Usuario
 
 
 
-public function mostrarTipos($con)
-{
-    try {
-        $stmt = $con->prepare("SELECT * FROM tipos_usuario");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        throw new Exception("Erro ao carregar tipos: " . $e->getMessage());
+    public function mostrarTipos($con)
+    {
+        try {
+            $stmt = $con->prepare("SELECT * FROM tipos_usuario");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao carregar tipos: " . $e->getMessage());
+        }
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
