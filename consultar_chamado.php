@@ -5,8 +5,6 @@ include "classes/Chamado.php";
 
 $chamado_obj = new Chamado("", "", "", "");
 
-// DEBUG
-echo "<!-- DEBUG: User: {$_SESSION['nome']}, Depto: {$_SESSION['id_departamento']}, Perfil: {$_SESSION['id_tipo_usuario']} -->";
 
 ?>
 <main class="container mt-4">
