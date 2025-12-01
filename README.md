@@ -1,7 +1,7 @@
 # HelpDeks
 Programadores: Arthut Oliveira, Rafael gonçalves, Kaue Teodoro
+<hr>
 Central 42 HelpDesk em PHP - Repositório Criado para Projeto de PHP nas aulas de Desenvolvimento de Sistemas
-
 <hr>
 
 
@@ -15,4 +15,8 @@ Central 42 HelpDesk em PHP - Repositório Criado para Projeto de PHP nas aulas d
 </ul>
 
 
-# MODELAGEM DO BANCO
+# VERSÕES
+<ul>
+  <li> PHP 8 </li>
+  <li> MySQL 15.1 DISTRIB 10.4.32 MariaDB </li>
+</ul>
