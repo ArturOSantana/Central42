@@ -174,17 +174,6 @@ $usuarios = $usuarioModelo->listarTodos($con);
     </div>
 </main>
 
-<script>
-    // Busca em tempo real
-    document.getElementById('searchInput').addEventListener('keyup', function() {
-        const searchText = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#usersTable tbody tr');
 
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(searchText) ? '' : 'none';
-        });
-    });
-</script>
 
 <?php include "rodape.php"; ?>
