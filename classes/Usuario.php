@@ -173,8 +173,24 @@ class Usuario
             $stmt = $con->prepare("SELECT * FROM tipos_usuario");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new Exception("Erro ao carregar tipos: " . $e->getMessage());
+        } catch (PDOException $erroAoMostrarTipo) {
+            ("Erro ao carregar tipos: " . $erroAoMostrarTipo->getMessage());
         }
     }
+
+    public function reabrirChamado($con, $idchamado, $idFunc, $status){
+            try{
+                $stmt = $con -> prepare("UPDATE chamados SET status = 'Aberto'; ");
+                $stmt -> execute();
+
+                $stmtDeletar = $con -> prepare("DELETE FROM feedback WHERE id_chamado = ':idchamado';");
+                $stmtDeletar -> bindParam(":idchamado",$idchamado);
+                $stmtDeletar -> execute();
+
+            }
+            catch(PDOExecption $erroReabertura){
+                
+            }
+        }
+    
 }

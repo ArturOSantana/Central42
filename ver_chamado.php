@@ -73,6 +73,19 @@ $chamado = $chamados->visualizarChamado($con, $id_chamado);
                 </div>
             <?php } ?>
 
+            <!-- REABIR CHAMADO --> 
+             <?php if (($_SESSION['id_tipo_usuario'] == 2 || $_SESSION['id_tipo_usuario'] == 3) && $chamado['status'] == 'Fechado') { ?>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <form action="ver_chamado.php?id=<?php echo $chamado['id_chamado'] ?>>
+                            <input type="hidden" name="id_chamado" value="<?php echo $id_chamado; ?>">
+                            <button type="submit" class="btn btn-danger btn-lg px-4">Reabir Chamado</button>
+                            <?php $chamado ->reabrirChamado($con) ?>
+                        </form>
+                    </div>
+                </div>
+            <?php } ?>
+
             <div class="row mt-4">
                 <div class="col-12">
                     <?php include "avaliar_chamado.php"; ?>
