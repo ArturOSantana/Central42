@@ -106,7 +106,7 @@ class Usuario
     {
         try {
             if ($id_usuario == $id_usuario_logado) {
-                throw new Exception("Não é possível excluir seu próprio usuário!");
+                
             }
 
             $stmt = $con->prepare("DELETE FROM usuarios WHERE id_usuario = :id");

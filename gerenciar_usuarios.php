@@ -16,13 +16,7 @@ if (isset($_GET['excluir'])) {
     $id_excluir = $_GET['excluir'];
 
     $resultado = $usuarioModelo->excluirUsuario($con, $id_excluir, $_SESSION['id']);
-    if ($resultado == true) {
-        $mensagem = "Usuário excluído com sucesso!";
-        $tipo_mensagem = "success";
-    } else {
-        $mensagem = "Erro ao excluir usuário!";
-        $tipo_mensagem = "danger";
-    }
+   
 }
 
 
@@ -68,7 +62,7 @@ $usuarios = $usuarioModelo->listarTodos($con);
             </div>
         </div>
         <div class="users-table-container">
-            <?php if (count($usuarios) > 1){ ?>
+            <?php if (count($usuarios) > 0){ ?>
                 <div class="table-responsive">
                     <table class="table table-hover" id="usersTable">
                         <thead class="table-dark">
