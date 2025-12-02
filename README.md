@@ -1,5 +1,5 @@
 # HelpDeks
-Programadores: Arthut Oliveira, Rafael gonçalves, Kaue Teodoro
+Programadores: Artur Oliveira, Rafael gonçalves, Kaue Teodoro, Arthur Gomes
 <hr>
 Central 42 HelpDesk em PHP - Repositório Criado para Projeto de PHP nas aulas de Desenvolvimento de Sistemas
 <hr>

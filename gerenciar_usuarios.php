@@ -59,7 +59,7 @@ $usuarios = $usuarioModelo->listarTodos($con);
                 </div>
                 <div class="col-md-6 text-end">
                     <div class="input-group search-box">
-                        <input type="text" class="form-control" placeholder="Buscar usuário..." id="searchInput">
+                        <input type="text" class="form-control" placeholder="Buscar usuário" id="searchInput">
                         <button class="btn btn-outline-primary" type="button">
                             <i class="fas fa-search"></i>
                         </button>
