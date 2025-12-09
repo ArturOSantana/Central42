@@ -1,4 +1,5 @@
-<?php
+<?php 
+include "classes/Feedback.php";
 class Chamado
 {
     private $id;
@@ -151,13 +152,15 @@ class Chamado
             try{
                 $stmt = $con -> prepare("UPDATE chamados SET status = 'Aberto'; ");
                 $stmt -> execute();
-
                 $stmtDeletar = $con -> prepare("DELETE FROM feedback WHERE id_chamado = ':idchamado';");
                 $stmtDeletar -> bindParam(":idchamado",$idchamado);
                 $stmtDeletar -> execute();
+                $fed = new Feedback("","","","");
+                $fed -> apagarFeedback($con,$idchamado);
+
 
             }
-            catch(PDOExecption $erroReabertura){
+            catch(PDOException $erroReabertura){
                 
             }
         }

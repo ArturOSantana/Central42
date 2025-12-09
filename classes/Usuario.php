@@ -178,19 +178,6 @@ class Usuario
         }
     }
 
-    public function reabrirChamado($con, $idchamado, $idFunc, $status){
-            try{
-                $stmt = $con -> prepare("UPDATE chamados SET status = 'Aberto'; ");
-                $stmt -> execute();
-
-                $stmtDeletar = $con -> prepare("DELETE FROM feedback WHERE id_chamado = ':idchamado';");
-                $stmtDeletar -> bindParam(":idchamado",$idchamado);
-                $stmtDeletar -> execute();
-
-            }
-            catch(PDOExecption $erroReabertura){
-                
-            }
-        }
+   
     
 }

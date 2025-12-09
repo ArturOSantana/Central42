@@ -54,6 +54,18 @@ class Feedback
        
     }
 
+    public function apagarFeedback($con,$id){
+       
+        try{
+            $stmt = $con -> prepare("SELECT * FROM feedacks WHERE id_chamado = :id;");
+            $stmt -> bindParam(":id",$id);
+            $stmt -> execute();
+        } 
+        catch(PDOException $erroDeletarFeedback){
+            echo "erro ao Deletar FeedBack" . $erroDeletarFeedback -> getMessage();
+
+        }
+    }
 
 
 
