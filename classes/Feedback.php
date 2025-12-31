@@ -57,7 +57,7 @@ class Feedback
     public function apagarFeedback($con,$id){
        
         try{
-            $stmt = $con -> prepare("SELECT * FROM feedacks WHERE id_chamado = :id;");
+            $stmt = $con -> prepare("DELETE FROM feedbacks WHERE id_chamado = :id;");
             $stmt -> bindParam(":id",$id);
             $stmt -> execute();
         } 
@@ -66,6 +66,8 @@ class Feedback
 
         }
     }
+
+
 
 
 

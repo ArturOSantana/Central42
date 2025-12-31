@@ -148,20 +148,14 @@ class Chamado
         }
     }
 
-     public function reabrirChamado($con, $idchamado, $idFunc, $status){
+     public function reabrirChamado($con){
             try{
-                $stmt = $con -> prepare("UPDATE chamados SET status = 'Aberto'; ");
+                $stmt = $con -> prepare("UPDATE chamados SET status = 'Aberto';");
                 $stmt -> execute();
-                $stmtDeletar = $con -> prepare("DELETE FROM feedback WHERE id_chamado = ':idchamado';");
-                $stmtDeletar -> bindParam(":idchamado",$idchamado);
-                $stmtDeletar -> execute();
-                $fed = new Feedback("","","","");
-                $fed -> apagarFeedback($con,$idchamado);
-
 
             }
             catch(PDOException $erroReabertura){
                 
             }
-        }
+        } 
 }

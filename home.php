@@ -52,7 +52,7 @@ include "cabecalho_logado.php";
               <?php if($_SESSION['id_tipo_usuario'] == "3"){ ?>
                 <div class="col-md-6 mb-4">
                   <a href="gerenciar_usuarios.php">
-                    <img src="img/gerenciar_usuarios.png" alt="Gerenciar Usuários" class="img-fluid" style="max-width:150px;">
+                    <img src="img/gerenciarUsuario.png" alt="Gerenciar Usuários" class="img-fluid" style="max-width:150px;">
                   </a>
                   <p class="mt-4">Gerenciar Usuários</p>
                 </div>

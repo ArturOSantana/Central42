@@ -1,4 +1,5 @@
-<?php $avaliacao = new Feedback("", "", "", "");
+<?php 
+$avaliacao = new Feedback("", "", "", "");
 $avaliou = $avaliacao->vericarFeedback($con, $chamado["id_chamado"]) ?>
 <?php if ($chamado['status'] == 'Fechado') { ?>
 
